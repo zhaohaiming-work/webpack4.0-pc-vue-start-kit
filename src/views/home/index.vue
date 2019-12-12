@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div>{{msg}}</div>
+        <div class='box'>{{msg}}</div>
         <router-view/>
     </div>
 </template>
@@ -20,9 +20,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.box {
-    width: 100px;
-    height: 100px;
-    background: red;
-}
+// .box {
+//     width: 100px;
+//     height: 100px;
+//     background: red;
+// }
 </style>
