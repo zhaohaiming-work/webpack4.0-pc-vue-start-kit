@@ -87,20 +87,19 @@ const babelLoader = {
       '@babel/plugin-transform-runtime'
     ],
     presets: [
-      '@babel/preset-env',
-      // {
-      //   modules: false,
-      //   loose: true,
-      //   // useBuiltIns: "usage",
-      //   targets: {
-      //     ie: 9,
-      //     browsers: [
-      //       'last 5 versions',
-      //       'safari >= 7',
-      //       'not ie < 9'
-      //     ]
-      //   }
-      // }
+      ['@babel/preset-env', {
+        modules: false,
+        loose: true,
+        // useBuiltIns: "usage",
+        targets: {
+          ie: 9,
+          browsers: [
+            'last 5 versions',
+            'safari >= 7',
+            'not ie < 9'
+          ]
+        }
+      }]
     ]
   }
 }
