@@ -1,22 +1,19 @@
 <template>
     <h1>
-        {{msg}}
+        {{ msg }}
     </h1>
 </template>
 
 <script>
 export default {
-    name: 'index',
-    components: {
-
-    },
+    name: "index",
+    components: {},
     data() {
         return {
-            msg: '你好这是测试页面'
-        }
-    },
-
-}
+            msg: "你好这是测试页面"
+        };
+    }
+};
 </script>
 
 <style lang="scss" scoped>

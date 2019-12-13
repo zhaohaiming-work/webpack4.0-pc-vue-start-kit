@@ -1,25 +1,23 @@
 <template>
     <div>
-        <div class='box'>{{msg}}</div>
-        <router-view/>
+        <div class="box">{{ msg }}</div>
+        <router-view />
     </div>
 </template>
 
 <script>
 export default {
-    name: 'index',
+    name: "index",
     data() {
         return {
-            msg: '这是一个很寂寞的天'
-        }
+            msg: "这是一个很寂寞的天"
+        };
     },
-    components: {
-
-    },
+    components: {},
     created() {
-        console.log('fdsafsdfasd')
-    },
-}
+        console.log("fdsafsdfasd");
+    }
+};
 </script>
 
 <style lang="scss" scoped>

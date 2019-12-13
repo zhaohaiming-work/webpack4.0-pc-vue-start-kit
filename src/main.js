@@ -4,22 +4,18 @@ import router from './routers/'
 import './styles/base'
 Vue.config.productionTip = false
 
-const render = () => new Vue({
-  render: h => h(App),
-  router
-}).$mount('#app')
+const render = () =>
+  new Vue({
+    render: h => h(App),
+    router
+  }).$mount('#app')
 
 render()
 
 if (__DEV__) {
   if (module.hot) {
-    module.hot.accept([
-      './App',
-      './routers',
-      './styles/base.scss'
-    ], () => Promise.resolve()
-      .then(render)
+    module.hot.accept(['./App', './routers', './styles/base.scss'], () =>
+      Promise.resolve().then(render)
     )
   }
 }
-
