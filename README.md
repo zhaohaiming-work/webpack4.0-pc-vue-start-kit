@@ -8,7 +8,7 @@
 
 * 项目配置
 
-> webpack4.0 + react + react-router-dom + mobx
+> webpack4.0 + vue + vue-router
 
 * 项目启动步骤：
 
@@ -39,3 +39,19 @@
    npm build
 
  ```
+
+  * 项目打包：
+
+> vscode 配置
+
+
+需要安装 prettier 插件
+
+在setting里面配置
+
+```
+
+   "prettier.tabWidth": 2,
+   "vetur.format.defaultFormatter.html": "prettier"
+
+```
