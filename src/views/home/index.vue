@@ -1,22 +1,22 @@
 <template>
-    <div>
-        <div class="box">{{ msg }}</div>
-        <router-view />
-    </div>
+  <div>
+    <div class="box">{{ msg }}</div>
+    <router-view />
+  </div>
 </template>
 
 <script>
 export default {
-    name: "index",
-    data() {
-        return {
-            msg: "这是一个很寂寞的天"
-        };
-    },
-    components: {},
-    created() {
-        console.log("fdsafsdfasd");
-    }
+  name: "index",
+  data() {
+    return {
+      msg: "这是一个很寂寞的天"
+    };
+  },
+  components: {},
+  created() {
+    console.log("fdsafsdfasd");
+  }
 };
 </script>
 
