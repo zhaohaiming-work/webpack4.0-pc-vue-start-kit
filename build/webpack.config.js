@@ -8,6 +8,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const HappyPack = require('happypack')
+const os = require('os')
+const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
 const inProject = path.resolve.bind(path, basePath)
 const inProjectSrc = (file) => inProject(srcDir, file)
 // 各类非 js 直接引用（import require）静态资源，依赖相对路径加载问题，都可以用 ~ 语法完美解决；
@@ -44,7 +47,7 @@ const config = {
     alias: {
 
     },
-    extensions: ['*', '.js', '.vue', '.scss', '.css', '.json']
+    extensions: ['*', '.js', '.vue', '.scss', '.css', '.json', '.jpg', '.jpeg', '.png']
   },
   externals,
   plugins: [
@@ -67,36 +70,46 @@ config.module.rules.push({
 config.module.rules.push({
   test: /\.js|jsx$/i,
   exclude: /node_modules/,
-  use: [
-    {
-      loader: 'babel-loader',
-      options: {
-        comments: false,
-        plugins: [
-          '@babel/plugin-syntax-dynamic-import',
-          '@babel/plugin-proposal-export-default-from',
-          '@babel/plugin-transform-runtime'
-        ],
-        presets: [
-          '@babel/preset-env',
-          // {
-          //   modules: false,
-          //   loose: true,
-          //   // useBuiltIns: "usage",
-          //   targets: {
-          //     ie: 9,
-          //     browsers: [
-          //       'last 5 versions',
-          //       'safari >= 7',
-          //       'not ie < 9'
-          //     ]
-          //   }
-          // }
-        ]
-      }
-    }
-  ]
+  loader: 'happypack/loader?id=happyBabel'
 })
+
+const babelLoader = {
+  loader: 'babel-loader',
+  options: {
+    comments: false,
+    plugins: [
+      '@babel/plugin-syntax-dynamic-import',
+      '@babel/plugin-proposal-export-default-from',
+      '@babel/plugin-transform-runtime'
+    ],
+    presets: [
+      '@babel/preset-env',
+      // {
+      //   modules: false,
+      //   loose: true,
+      //   // useBuiltIns: "usage",
+      //   targets: {
+      //     ie: 9,
+      //     browsers: [
+      //       'last 5 versions',
+      //       'safari >= 7',
+      //       'not ie < 9'
+      //     ]
+      //   }
+      // }
+    ]
+  }
+}
+// js happypack
+config.plugins.push(
+  new HappyPack({
+    id: 'happyBabel',
+    loaders: [babelLoader],
+    //共享进程池
+    threadPool: happyThreadPool,
+    verbose: false,
+  })
+)
 // css
 config.module.rules.push({
   test: /\.(sa|sc|c)ss$/,

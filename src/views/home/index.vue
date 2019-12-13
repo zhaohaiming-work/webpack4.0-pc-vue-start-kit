@@ -10,12 +10,15 @@ export default {
     name: 'index',
     data() {
         return {
-            msg: '你好这是个首页的轮廓'
+            msg: '这是一个很寂寞的天'
         }
     },
     components: {
 
-    }
+    },
+    created() {
+        console.log('fdsafsdfasd')
+    },
 }
 </script>
 

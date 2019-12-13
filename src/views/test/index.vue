@@ -7,14 +7,15 @@
 <script>
 export default {
     name: 'index',
+    components: {
+
+    },
     data() {
         return {
             msg: '你好这是测试页面'
         }
     },
-    components: {
 
-    }
 }
 </script>
 
