@@ -18,6 +18,8 @@ const resolve = dir => path.join(__dirname, '..', dir)
 const __DEV__ = env === 'development'
 const __TEST__ = env === 'test'
 const __PROD__ = env === 'production'
+const extensions = ['*', '.js', '.vue', '.scss', '.css', '.json', '.jpg', '.jpeg', '.png']
+
 const config = {
   // mode: 'development',
   mode: env,
@@ -45,9 +47,11 @@ const config = {
       'node_modules'
     ],
     alias: {
-
+      '@': resolve(srcDir),
+      api: resolve(`${srcDir}/api`),
+      pages: resolve(`${srcDir}/views`),
     },
-    extensions: ['*', '.js', '.vue', '.scss', '.css', '.json', '.jpg', '.jpeg', '.png']
+    extensions
   },
   externals,
   plugins: [
