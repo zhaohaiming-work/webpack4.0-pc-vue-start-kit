@@ -10,12 +10,12 @@ export default {
   name: "index",
   data() {
     return {
-      msg: "这是一个很寂寞的天"
+      msg: "这是一个很寂寞的天,下着有些伤心的🌧"
     };
   },
   components: {},
   created() {
-    console.log("fdsafsdfasd");
+    console.log("测试开始页面");
   }
 };
 </script>

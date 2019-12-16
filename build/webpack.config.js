@@ -68,7 +68,16 @@ const config = {
 //handle .vue
 config.module.rules.push({
   test: /\.vue$/i,
-  use: 'vue-loader'
+  use: [
+    {
+      loader: 'vue-loader',
+      options: {
+        loaders: {
+          js: 'happypack/loader?id=happyBabel'
+        }
+      }
+    }
+  ]
 })
 //handle .js
 config.module.rules.push({
@@ -107,6 +116,7 @@ const babelLoader = {
 config.plugins.push(
   new HappyPack({
     id: 'happyBabel',
+    cache: false,
     loaders: [babelLoader],
     //共享进程池
     threadPool: happyThreadPool,
