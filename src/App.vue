@@ -1,5 +1,5 @@
 <template>
-  <div class="page-layout">
+  <div class="page-layout" id='app'>
     <router-view />
   </div>
 </template>
@@ -11,6 +11,9 @@ export default {
     return {
       msg: "hello world"
     };
+  },
+  created() {
+    // console.log(this.$store);
   }
 };
 </script>

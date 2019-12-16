@@ -1,7 +1,8 @@
 <template>
-  <h1>
-    {{ msg }}
-  </h1>
+  <div>
+    <h1>{{ msg }}{{ count }}</h1>
+    <button>点击事件</button>
+  </div>
 </template>
 
 <script>
@@ -10,8 +11,12 @@ export default {
   components: {},
   data() {
     return {
-      msg: "你好这是测试页面"
+      msg: "测试测试",
+      count: this.$store.state.count
     };
+  },
+  created() {
+    console.log(this.$store);
   }
 };
 </script>
