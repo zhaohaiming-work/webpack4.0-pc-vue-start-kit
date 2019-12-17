@@ -37,6 +37,12 @@ const config = {
     chunkFilename: __DEV__ ? 'js/[name].js' : 'js/[name].[chunkhash].js',
     publicPath,
   },
+  // Remove size waring
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000
+  },
   devtool: sourcemaps ? 'cheap-module-eval-source-map' : false,
   module: {
     rules: []
@@ -123,7 +129,7 @@ const babelLoader = {
 config.plugins.push(
   new HappyPack({
     id: 'happyBabel',
-    // cache: false,
+    cache: __DEV__,
     loaders: [babelLoader],
     // 共享进程池
     threadPool: happyThreadPool,
