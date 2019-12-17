@@ -15,7 +15,7 @@ export default {
   },
   components: {},
   created() {
-    console.log("测试开始页面");
+    // console.log("测试开始页面");
   }
 };
 </script>
