@@ -65,7 +65,7 @@ const config = {
     new VueLoaderPlugin()
   ]
 }
-//handle .vue
+// handle .vue
 config.module.rules.push({
   test: /\.vue$/i,
   use: [
@@ -79,7 +79,7 @@ config.module.rules.push({
     }
   ]
 })
-//handle .js
+// handle .js
 config.module.rules.push({
   test: /\.js|jsx$/i,
   exclude: /node_modules/,
@@ -93,7 +93,14 @@ const babelLoader = {
     plugins: [
       '@babel/plugin-syntax-dynamic-import',
       '@babel/plugin-proposal-export-default-from',
-      '@babel/plugin-transform-runtime'
+      '@babel/plugin-transform-runtime',
+      [
+        'import', {
+          'libraryName': 'ant-design-vue',
+          'libraryDirectory': 'es',
+          'style': 'css'
+        }
+      ] // `style: true` 会加载 less 文件
     ],
     presets: [
       ['@babel/preset-env', {
@@ -116,9 +123,9 @@ const babelLoader = {
 config.plugins.push(
   new HappyPack({
     id: 'happyBabel',
-    //cache: false,
+    // cache: false,
     loaders: [babelLoader],
-    //共享进程池
+    // 共享进程池
     threadPool: happyThreadPool,
     verbose: false,
   })
@@ -156,27 +163,27 @@ config.module.rules.push({
     name: 'images/[name]-[hash].[ext]'
   },
 })
-  // font and svg
-  ;[
-    ['woff', 'application/font-woff'],
-    ['woff2', 'application/font-woff2'],
-    ['otf', 'font/opentype'],
-    ['ttf', 'application/octet-stream'],
-    ['eot', 'application/vnd.ms-fontobject'],
-    ['svg', 'image/svg+xml'],
-  ].forEach((font) => {
-    const extension = font[0]
-    const mimetype = font[1]
-    config.module.rules.push({
-      test: new RegExp(`\\.${extension}$`),
-      loader: 'url-loader',
-      options: {
-        name: 'fonts/[name]-[hash].[ext]',
-        limit: 10000,
-        mimetype,
-      },
-    })
+// font and svg
+;[
+  ['woff', 'application/font-woff'],
+  ['woff2', 'application/font-woff2'],
+  ['otf', 'font/opentype'],
+  ['ttf', 'application/octet-stream'],
+  ['eot', 'application/vnd.ms-fontobject'],
+  ['svg', 'image/svg+xml'],
+].forEach((font) => {
+  const extension = font[0]
+  const mimetype = font[1]
+  config.module.rules.push({
+    test: new RegExp(`\\.${extension}$`),
+    loader: 'url-loader',
+    options: {
+      name: 'fonts/[name]-[hash].[ext]',
+      limit: 10000,
+      mimetype,
+    },
   })
+})
 // template
 config.plugins.push(new HtmlWebpackPlugin({
   template: inProjectSrc('index.html'),
@@ -227,7 +234,7 @@ if (__DEV__) {
 // production
 if (__PROD__) {
   config.optimization.minimizer = [
-    //mini js
+    // mini js
     new TerserPlugin({
       terserOptions: {
         ecma: undefined,
@@ -245,10 +252,10 @@ if (__PROD__) {
         safari10: false,
       },
     }),
-    //mini css
+    // mini css
     new OptimizeCSSAssetsPlugin({})
   ]
-  //separate css
+  // separate css
   config.plugins.push(new MiniCssExtractPlugin({
     filename: __DEV__ ? 'css/[name].css' : 'css/[name].[contenthash].css',
     chunkFilename: __DEV__ ? 'css/[id].css' : 'css/[id].[hash].css'

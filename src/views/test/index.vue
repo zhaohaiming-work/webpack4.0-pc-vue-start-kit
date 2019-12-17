@@ -1,7 +1,8 @@
 <template>
   <div>
     <h1>{{ msg }}{{ count }}</h1>
-    <button @click="add">点击事件</button>
+    <Button @click="add">点击事件</Button>
+    <Pagination v-model="current" :total="50" />
     <ul>
       <li v-for="(item, index) in cityArr">
         <h2>{{ item }}</h2>
@@ -11,12 +12,17 @@
 </template>
 
 <script>
+import { Button, Pagination } from "ant-design-vue";
 export default {
   name: "index",
-  components: {},
+  components: {
+    Button,
+    Pagination
+  },
   data() {
     return {
-      msg: "测试测试"
+      msg: "测试测试",
+      current: 2
     };
   },
   computed: {
