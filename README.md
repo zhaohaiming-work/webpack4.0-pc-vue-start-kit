@@ -1,4 +1,4 @@
-# webpack4.0-react-start-kit
+# webpack4.0-vue-start-kit
 
 * 需要环境
  ```bash
