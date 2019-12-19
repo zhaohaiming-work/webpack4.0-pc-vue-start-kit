@@ -21,11 +21,11 @@ if (project.env === 'development') {
   }))
   app.use(require('webpack-hot-middleware')(compiler, {
     path: '/__webpack_hmr',
-    reload:true
+    reload: true
   }))
 
   app.use(express.static(path.resolve(project.basePath, 'public')))
-  app.use('*', function (req, res, next) {
+  app.use('*', function(req, res, next) {
     const filename = path.join(compiler.outputPath, 'index.html')
     compiler.outputFileSystem.readFile(filename, (err, result) => {
       if (err) {

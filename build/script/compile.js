@@ -42,7 +42,7 @@ const compiler = () => Promise.resolve()
     if (project.verbose) {
       logger.log(res.toString({
         colors: true,
-        chunks: false,
+        chunks: false
       }))
     }
     logger.success(`Compiler finished successfully! See ./${project.outDir}.`)

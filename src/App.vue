@@ -1,21 +1,21 @@
 <template>
-  <div class="page-layout" id='app'>
+  <div id="app" class="page-layout">
     <router-view />
   </div>
 </template>
 
 <script>
 export default {
-  name: "app",
+  name: 'App',
   data() {
     return {
-      msg: "hello world"
-    };
+      msg: 'hello world'
+    }
   },
   created() {
     // console.log(this.$store);
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

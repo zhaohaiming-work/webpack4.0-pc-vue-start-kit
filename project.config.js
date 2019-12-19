@@ -10,7 +10,7 @@ module.exports = {
   main: 'main',
   outDir: 'dist',
   publicPath: NODE_ENV === 'development' ? `http://${ip.address()}:${port}/` : './',
-  sourcemaps:NODE_ENV === 'development',
+  sourcemaps: NODE_ENV === 'development',
   externals: {},
   globals: {},
   verbose: false

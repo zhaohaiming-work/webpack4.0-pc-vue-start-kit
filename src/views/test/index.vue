@@ -4,7 +4,7 @@
     <Button @click="add">点击事件</Button>
     <Pagination v-model="current" :total="50" />
     <ul>
-      <li v-for="(item, index) in cityArr">
+      <li v-for="(item, index) in cityArr" :key="index">
         <h2>{{ item }}</h2>
       </li>
     </ul>
@@ -12,25 +12,25 @@
 </template>
 
 <script>
-import { Button, Pagination } from "ant-design-vue";
+import { Button, Pagination } from 'ant-design-vue'
 export default {
-  name: "index",
+  name: 'Index',
   components: {
     Button,
     Pagination
   },
   data() {
     return {
-      msg: "测试测试",
+      msg: '测试测试',
       current: 2
-    };
+    }
   },
   computed: {
     count() {
-      return this.$store.state.count;
+      return this.$store.state.count
     },
     cityArr() {
-      return this.$store.state.city;
+      return this.$store.state.city
     }
   },
   created() {
@@ -38,10 +38,10 @@ export default {
   },
   methods: {
     add() {
-      this.$store.dispatch("add");
+      this.$store.dispatch('add')
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

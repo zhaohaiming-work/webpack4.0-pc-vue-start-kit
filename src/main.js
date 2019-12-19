@@ -15,6 +15,7 @@ const render = () =>
 
 render()
 
+// eslint-disable-next-line no-undef
 if (__DEV__) {
   if (module.hot) {
     module.hot.accept([

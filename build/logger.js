@@ -1,7 +1,7 @@
 const chalk = require('chalk')
 const figures = require('figures')
 
-const spread = (fn) => function () {
+const spread = (fn) => function() {
   return fn([].slice.call(arguments))
 }
 

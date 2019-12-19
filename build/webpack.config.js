@@ -25,17 +25,17 @@ const config = {
   mode: env,
   entry: {
     normalize: [
-      inProjectSrc('normalize'),
+      inProjectSrc('normalize')
     ],
     main: [
-      inProjectSrc(main),
+      inProjectSrc(main)
     ]
   },
   output: {
     path: inProject(outDir),
     filename: __DEV__ ? 'js/[name].js' : 'js/[name].[chunkhash].js',
     chunkFilename: __DEV__ ? 'js/[name].js' : 'js/[name].[chunkhash].js',
-    publicPath,
+    publicPath
   },
   // Remove size waring
   performance: {
@@ -55,7 +55,7 @@ const config = {
     alias: {
       '@': resolve(srcDir),
       api: resolve(`${srcDir}/api`),
-      pages: resolve(`${srcDir}/views`),
+      pages: resolve(`${srcDir}/views`)
     },
     extensions
   },
@@ -133,7 +133,7 @@ config.plugins.push(
     loaders: [babelLoader],
     // 共享进程池
     threadPool: happyThreadPool,
-    verbose: false,
+    verbose: false
   })
 )
 // css
@@ -143,7 +143,7 @@ config.module.rules.push({
     'vue-style-loader',
     // 只能在production中运用MiniCssExtractPlugin.loader
     {
-      loader: __DEV__ ? 'style-loader' : MiniCssExtractPlugin.loader,
+      loader: __DEV__ ? 'style-loader' : MiniCssExtractPlugin.loader
     },
     {
       loader: 'css-loader',
@@ -167,7 +167,7 @@ config.module.rules.push({
   options: {
     limit: 8192,
     name: 'images/[name]-[hash].[ext]'
-  },
+  }
 })
 // font and svg
 ;[
@@ -176,7 +176,7 @@ config.module.rules.push({
   ['otf', 'font/opentype'],
   ['ttf', 'application/octet-stream'],
   ['eot', 'application/vnd.ms-fontobject'],
-  ['svg', 'image/svg+xml'],
+  ['svg', 'image/svg+xml']
 ].forEach((font) => {
   const extension = font[0]
   const mimetype = font[1]
@@ -186,8 +186,8 @@ config.module.rules.push({
     options: {
       name: 'fonts/[name]-[hash].[ext]',
       limit: 10000,
-      mimetype,
-    },
+      mimetype
+    }
   })
 })
 // template
@@ -195,8 +195,8 @@ config.plugins.push(new HtmlWebpackPlugin({
   template: inProjectSrc('index.html'),
   inject: true,
   minify: {
-    collapseWhitespace: true,
-  },
+    collapseWhitespace: true
+  }
 }))
 // Bundle Splitting
 config.optimization = {
@@ -214,7 +214,7 @@ config.optimization = {
         chunks: 'all',
         minChunks: 2,
         name: 'commons',
-        priority: 80,
+        priority: 80
       }
     }
   }
@@ -255,8 +255,8 @@ if (__PROD__) {
         ie8: false,
         keep_classnames: undefined,
         keep_fnames: false,
-        safari10: false,
-      },
+        safari10: false
+      }
     }),
     // mini css
     new OptimizeCSSAssetsPlugin({})
