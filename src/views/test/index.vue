@@ -3,7 +3,7 @@
     <h1>{{ msg }}{{ count }}</h1>
     <Button @click="add">点击事件</Button>
     <Pagination v-model="current" :total="50" />
-    <ming name='啦啦啦'></ming>
+    <ming name='啦啦啦'>人间情多</ming>
     <ul>
       <li v-for="(item, index) in cityArr" :key="index">
         <div>{{ item }}</div>
@@ -37,7 +37,7 @@ export default {
     }
   },
   created() {
-    // console.log(this.$store);
+    // console.log(this.$props)
   },
   methods: {
     add() {

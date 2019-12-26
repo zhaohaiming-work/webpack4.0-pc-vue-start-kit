@@ -2,6 +2,7 @@
   <div>
     {{msg}}
     <p>{{name}}</p>
+    <slot>作用域插槽</slot>
   </div>
 </template>
 <script>
@@ -12,7 +13,10 @@ export default {
       msg: '毛毛雨'
     }
   },
-  props: ['name']
+  props: ['name'],
+  created() {
+    // console.log(this)
+  }
 }
 </script>
 <style lang="scss">
